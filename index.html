@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt_BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>Gravador de telas</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <span class="navbar-brand mb-0 h1">Gravador de telas</span>
+  </nav>
+
+  <div class="container">
+
+    <div id="erro" class="alert alert-danger d-none mt-3" role="alert">
+      Seu navegador não possui o suporte necessário para essa ferramenta funcionar.
+    </div>
+
+    <div class="row justify-content-md-center mt-3">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video id="preview" class="embed-responsive-item border"></video>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-3">
+      <button id="startCapture" type="button" class="btn btn-info m-1">Iniciar captura</button>
+      <button id="startRecord" disabled type="button" class="btn btn-success m-1">Iniciar gravação</button>
+      <button id="stopRecord" disabled type="button" class="btn btn-danger m-1">Parar gravação</button>
+      <a id="download" class="btn btn-primary disabled m-1">Download</a>
+    </div>
+    <div class="row justify-content-md-center mt-3">
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="audioDesktop">
+        <label class="form-check-label" for="audioDesktop">Capturar áudio da tela</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="audioMic">
+        <label class="form-check-label" for="audioMic">Capturar áudio do microfone</label>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="functions.js"></script>
+</body>
+
+</html>
