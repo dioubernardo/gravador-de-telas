@@ -15,15 +15,20 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="msapplication-starturl" content="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
   <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="assets/logo.png">
 
   <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
   <title>Gravador de telas</title>
   <style>
-      .navbar{background-color: #e84c3d}
-      .navbar-brand img{vertical-align: text-top}
+    .navbar {
+      background-color: #e84c3d
+    }
+
+    .navbar-brand img {
+      vertical-align: text-top
+    }
   </style>
 </head>
 
@@ -55,7 +60,6 @@
       <a id="download" class="btn btn-primary disabled m-1">Download</a>
     </div>
     <div class="row justify-content-md-center mt-3">
-
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="audioDesktop">
         <label class="form-check-label" for="audioDesktop">Capturar áudio da tela</label>
@@ -64,6 +68,11 @@
         <input class="form-check-input" type="checkbox" id="audioMic">
         <label class="form-check-label" for="audioMic">Capturar áudio do microfone</label>
       </div>
+    </div>
+    <div id="tipAudio" class="row justify-content-md-center mt-1 d-none">
+      <small class="form-text text-muted alert alert-warning" role="alert">
+        Não esqueça de assinalar a opção de compartilhar o áudio ao iniciar a captura.
+      </small>
     </div>
 
   </div>

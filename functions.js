@@ -1,5 +1,9 @@
-
 window.onload = () => {
+
+    $('#audioDesktop').change(function(){
+        $('#tipAudio').toggleClass('d-none', this.checked == false);
+    });
+
     const videoElement = document.getElementById('preview');
     const captureBtn = document.getElementById('startCapture');
     const startBtn = document.getElementById('startRecord');
@@ -9,7 +13,7 @@ window.onload = () => {
     const micAudioToggle = document.getElementById('audioMic');
 
     if (!('getDisplayMedia' in navigator.mediaDevices))
-        $('#erro').show();
+        $('#erro').removeClass('d-none');
 
     let blobs;
     let blob;
@@ -65,7 +69,7 @@ window.onload = () => {
         videoElement.muted = true;
         videoElement.controls = false;
         videoElement.autoplay = true;
-
+        videoElement.poster = '';
         blobs = [];
 
         rec = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp8,opus' });
