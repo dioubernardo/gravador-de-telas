@@ -3,15 +3,35 @@
 
 <head>
   <meta charset="utf-8">
+
+  <link rel="manifest" href="manifest.json">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Gravador de telas">
+  <meta name="apple-mobile-web-app-title" content="Gravador de telas">
+  <meta name="theme-color" content="#e84c3d">
+  <meta name="msapplication-navbutton-color" content="#e84c3d">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-starturl" content="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="assets/logo.png">
+
+  <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
   <title>Gravador de telas</title>
+  <style>
+      .navbar{background-color: #e84c3d}
+      .navbar-brand img{vertical-align: text-top}
+  </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <span class="navbar-brand mb-0 h1">Gravador de telas</span>
+  <nav class="navbar navbar-dark">
+    <a class="navbar-brand" href="#">
+      Gravador de telas
+    </a>
   </nav>
 
   <div class="container">
@@ -23,7 +43,7 @@
     <div class="row justify-content-md-center mt-3">
       <div class="col-lg-8">
         <div class="embed-responsive embed-responsive-16by9">
-          <video id="preview" class="embed-responsive-item border"></video>
+          <video id="preview" class="embed-responsive-item border" poster="assets/logo.svg"></video>
         </div>
       </div>
     </div>
@@ -48,15 +68,7 @@
 
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
+  <script src="libs/jquery/jquery-3.5.1.slim.min.js"></script>
   <script src="functions.js"></script>
 </body>
 
