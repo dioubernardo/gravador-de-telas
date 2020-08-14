@@ -1,1 +1,0 @@
-Este aplicativo não coleta nem salva dados, roda apenas no escopo do navegador do cliente.
