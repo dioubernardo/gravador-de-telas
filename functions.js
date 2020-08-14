@@ -1,6 +1,6 @@
 window.onload = () => {
 
-    $('#audioDesktop').change(function(){
+    $('#audioDesktop').change(function () {
         $('#tipAudio').toggleClass('d-none', this.checked == false);
     });
 
@@ -113,3 +113,8 @@ window.onload = () => {
         stream = null;
     };
 };
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('sw.js');
+}

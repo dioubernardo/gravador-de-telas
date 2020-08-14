@@ -2,9 +2,10 @@
     "name": "Gravador de telas",
     "short_name": "Gravador de telas",
     "lang": "pt-BR",
-    "start_url": "/",
+    "start_url": "index.html",
     "display": "minimal-ui",
     "theme_color": "#e84c3d",
+    "background_color": "#e84c3d",
     "icons": [
       {
         "src": "assets/logo.png",
