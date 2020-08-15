@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang='pt_BR'>
+
+<head>
+  <meta charset='utf-8'>
+
+  <link rel='icon' type='image/png' sizes='512x512' href='../assets/logo.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='512x512' href='../assets/logo.png'>
+
+  <link rel='stylesheet' href='../libs/bootstrap/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'
+    integrity='sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=='
+    crossorigin='anonymous' />
+  <title>Apresentação do Google + Câmera - Gravador de telas</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    .fullsize {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    #camera.pip {
+      position: absolute;
+      right: 0;
+      bottom: 30px;
+      text-align: right;
+    }
+
+    #camera video {
+      width: 100%;
+    }
+
+    #camera:hover .btn-toolbar {
+      display: block !important
+    }
+
+    #camera .btn-toolbar {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      display: none;
+    }
+
+    #camera.fullsize video {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    #camera video {
+      background: black;
+    }
+
+    #camera.fullsize .group1,
+    #camera.pip .group2 {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id='form' class='container mt-5'>
+    <h1>Apresentação do Google + Câmera</h1>
+    <form>
+      <div class='form-group'>
+        <label for='link'>Link da apresentação</label>
+        <input type='text' class='form-control' id='link' aria-describedby='linkHelp'
+          placeholder='https://docs.google.com/presentation/...' required>
+        <div class='invalid-feedback'>
+          O link informado é inválido
+        </div>
+        <small id='linkHelp' class='form-text text-muted'>
+          Acesse sua apresentação, clique no menu 'Arquivo' depois em 'Publicar na Web',
+          selecione a opção 'Link' e clique em 'Publicar'.
+          Copie o link e cole neste campo, você não precisa se preocupar com os demais parâmetros.
+        </small>
+      </div>
+      <button type='submit' class='btn btn-primary'>Iniciar</button>
+    </form>
+  </div>
+  <iframe class='fullsize d-none' id='googledocs' frameborder='0' allowfullscreen='false' mozallowfullscreen='false'
+    webkitallowfullscreen='false'></iframe>
+
+  <div id='camera' class='pip d-none'>
+    <video class='border' autoplay></video>
+    <div class='btn-toolbar' role='toolbar'>
+      <div class='btn-group btn-group-sm group1' role='group'>
+        <button id='btmais' type='button' class='btn btn-primary'><i class='fas fa-plus'></i></button>
+        <button id='btmenos' type='button' class='btn btn-primary'><i class='fas fa-minus'></i></button>
+        <button id='btexpa' type='button' class='btn btn-primary'><i class='fas fa-expand-alt'></i></button>
+      </div>
+      <div class='btn-group btn-group-sm group2' role='group'>
+        <button id='btcomp' type='button' class='btn btn-primary'><i class='fas fa-compress-alt'></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script src='../libs/jquery/jquery-3.5.1.slim.min.js'></script>
+  <script>
+    $('form').submit(function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      var link = $('#link').val();
+      var oco = link.match(/https:\/\/docs.google.com\/presentation\/d\/e\/([^\/]+)\/pub/);
+      $('.invalid-feedback').toggle(oco == null);
+
+      if (oco != null) {
+
+        $('#form').addClass('d-none');
+        $('#googledocs').attr('src', 'https://docs.google.com/presentation/d/e/' + oco[1] + '/embed?start=false&loop=false').removeClass('d-none');
+
+        navigator.mediaDevices.getUserMedia({
+          video: true
+        }).then((stream) => {
+          $('video').get(0).srcObject = stream;
+          $('#camera').width(zoom + '%');
+          $('#camera').removeClass('d-none');
+        });
+
+      }
+    });
+    var zoom = 25;
+    $('#btmais').click(function () {
+      if (zoom < 100) {
+        zoom += 5;
+        $('#camera').width(zoom + '%');
+      }
+    });
+    $('#btmenos').click(function () {
+      if (zoom > 10) {
+        zoom -= 5;
+        $('#camera').width(zoom + '%');
+        $('#btmenos').toggleClass('disabled', zoom < 20);
+      }
+    });
+    $('#btexpa').click(function () {
+      $('#camera').removeClass('pip').addClass('fullsize');
+      $('#camera').width('100%');
+    });
+    $('#btcomp').click(function () {
+      $('#camera').removeClass('fullsize').addClass('pip');
+      $('#camera').width(zoom + '%');
+    });
+  </script>
+</body>
+
+</html>
