@@ -112,6 +112,23 @@ window.onload = () => {
         videoElement.srcObject = null
         stream = null;
     };
+
+    $(".popup").click(function (e) {
+        e.preventDefault();
+
+        var w = 854, h = 480;
+        var a = $(this);
+
+        var left = (screen.width / 2) - (w / 2);
+        const newWindow = window.open(a.attr('href') + '#' + w + 'x' + h, a.attr('target'), 'location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no,width=' + w + ',height=' + h + ',top=20,left=' + left)
+        if (window.focus)
+            newWindow.focus();
+        else
+            $('#bloqueadorpopup').removeClass('d-none');
+
+        return false;
+    });
+
 };
 
 if ('serviceWorker' in navigator) {

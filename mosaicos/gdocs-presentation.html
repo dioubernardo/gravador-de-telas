@@ -60,10 +60,30 @@
     #camera.pip .group2 {
       display: none;
     }
+
+    #regua {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      z-index: -1;
+    }
+
+    #dimensao {
+      position: absolute;
+      left: 50px;
+      right: 50px;
+      top: 5px;
+    }
   </style>
 </head>
 
 <body>
+  <div id="regua"></div>
 
   <div id='form' class='container mt-5'>
     <h1>Apresentação do Google + Câmera</h1>
@@ -99,6 +119,10 @@
         <button id='btcomp' type='button' class='btn btn-primary'><i class='fas fa-compress-alt'></i></button>
       </div>
     </div>
+  </div>
+
+  <div id="dimensao" class="alert alert-warning d-none" role="alert">
+    Não altere a dimensão desta janela, ela está fixada para garantir a correta proporção do vídeo.
   </div>
 
   <script src='../libs/jquery/jquery-3.5.1.slim.min.js'></script>
@@ -148,6 +172,30 @@
       $('#camera').removeClass('fullsize').addClass('pip');
       $('#camera').width(zoom + '%');
     });
+
+    var regua = document.getElementById('regua');
+    var width = 854, height = 480;
+    var oco = location.hash.match(/#(\d+)x(\d+)/);
+    if (oco != null) {
+      width = oco[1];
+      height = oco[2];
+    }
+
+    var timer = 0;
+    setInterval(() => {
+      var ew = width - regua.offsetWidth;
+      var eh = height - regua.offsetHeight;
+      window.resizeTo(window.outerWidth + ew, window.outerHeight + eh);
+      if (ew != 0 || eh != 0) {
+        $('#dimensao').removeClass('d-none');
+        if (timer > 0)
+          clearTimeout(timer);
+        timer = setTimeout(() => {
+          $('#dimensao').addClass('d-none');
+        }, 3000);
+      }
+    }, 500);
+
   </script>
 </body>
 

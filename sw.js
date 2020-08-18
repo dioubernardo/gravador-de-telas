@@ -1,7 +1,7 @@
 
 self.addEventListener('install', function (e) {
     e.waitUntil(
-        caches.open('gravador-de-telas-v2').then(function (cache) {
+        caches.open('gravador-de-telas-v3').then(function (cache) {
             return cache.addAll([
                 'index.html',
                 'functions.js',
@@ -23,7 +23,7 @@ self.addEventListener('fetch', function (event) {
         } else {
             return fetch(event.request).then(function (response) {
                 let responseClone = response.clone();
-                caches.open('gravador-de-telas-v2').then(function (cache) {
+                caches.open('gravador-de-telas-v3').then(function (cache) {
                     cache.put(event.request, responseClone);
                 });
                 return response;
